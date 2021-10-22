@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /*https://programmers.co.kr/learn/courses/30/lessons/12954*/
-public class Xspace {
+public class Xspace2 {
     public static void main(String[] args){
 
             Scanner sc = new Scanner(System.in);

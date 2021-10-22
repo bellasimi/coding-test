@@ -3,7 +3,7 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
-public class StarArray1021 {
+public class StarArray1 {
     /*https://programmers.co.kr/learn/courses/30/lessons/12969*/
 
 

@@ -16,6 +16,7 @@ public class Level1_14 {
             strArr[i] = Integer.parseInt(String.valueOf(sb.charAt(i)));
         }
 
+
         System.out.println(str);
         System.out.println(sb);
         System.out.println(Arrays.toString(strArr));

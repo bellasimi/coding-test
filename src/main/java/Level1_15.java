@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 /*https://programmers.co.kr/learn/courses/30/lessons/12931/solution_groups?language=java*/
 public class Level1_15 {
@@ -14,5 +15,6 @@ public class Level1_15 {
             System.out.println(sum);
         }
         System.out.println(sum);
+
     }
 }

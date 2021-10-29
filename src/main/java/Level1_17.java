@@ -6,13 +6,18 @@ public class Level1_17 {
         int n = 13;
         List<Integer> list = new ArrayList<>();
         int sum = 0;
-        for(int i=1;i<=n;i++){
+        for(int i=1;i<=n/2;i++){
+            if(n%i==0){sum+=i;}
+        }
+        sum = sum+n;
+        /* for(int i=1;i<=n;i++){
+
             if(n%i==0) {list.add(i);}
         }
-        for(int i=0;i<list.size();i++){
+       for(int i=0;i<list.size();i++){
             sum+=list.get(i);
-        }
         System.out.println(list);
+        }*/
         System.out.println(sum);
 
     }

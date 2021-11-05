@@ -2,7 +2,7 @@ public class Level1_31 {
     public static void main(String[]args){
         String s = "abcd";
         String answer = "";
-        int begin = (s.length()-1)/2;
+        int begin = (s.length()-1)/2;//string의 첫 문자의 index는 0이니까 length-1의 /2가 가운데 글자의 시작 위치다.
         int end = s.length()/2+1;
         System.out.println(begin);
         System.out.println(end);

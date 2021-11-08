@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Optional;
 
 public class Level1_34 {
     public static void main(String[]args){
@@ -13,6 +15,11 @@ public class Level1_34 {
 
         }).map(it->it[0]*it[1]).get();
 
+        Optional<int[]> arr = Arrays.stream(sizes).reduce((a, b)-> new int[]{
+                Math.max(Math.max(a[0],a[1]),Math.max(b[0],b[1])),
+                Math.max(Math.min(a[0],a[1]),Math.min(b[0],b[1]))
+
+        });
         /*max min 초기화
 
         int max=0;

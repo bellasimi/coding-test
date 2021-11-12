@@ -5,57 +5,65 @@ import java.util.stream.Collectors;
 
 public class Level1_40 {
     public static void main(String[]args){
-/*        int N= 4;
-        int[] stages = {4,4,4,4,4};*/
 
         int N= 5;
         int[] stages = {2,1,2,6,2,4,3,3};
+        int[] fail = new int[N];
+        int[] user = new int[N];
+        int users = stages.length;//전체 유저수
+        //int[] failure = new int[N];
 
-        int[] user = new int[N+2];//7  0~6
-        double[] fail = new double[N+1];//6  0~5
+
+
+        /* 오름차순 정렬 */
+        Arrays.sort(stages);
+
+        /* 해당 스테이지 유저수 구하기 */
+        for(int i=0;i< stages.length;i++){
+            if(stages[i]>N){
+                continue; //게임 다 클리어한 경우
+            }
+            user[stages[i]-1]++; //해당 스테이지 1이면 배열 인덱스 0에 1씩 더해줘라
+
+
+        }
+
         Map<Integer,Double> map = new HashMap<Integer, Double>();
 
-
-
-        for(int i:stages){//각 스테이지 i에 몇명이 있는지 구함
-            user[0] =0;
-            user[i] +=1;
+        /* 실패율 구하기 */
+        for(int i=0;i<N;i++){
+            double failure = (users==0)? 0:user[i]/(double)users;
+            map.put(i+1,failure);
+            users -= user[i];//이러면 i스테이지 이상의 유저들로 계속 초기화됨
         }
-        for(int j = 1; j<fail.length; j++){//1~5
-            int cnt = 0;
-            for(int i = j; i<user.length; i++){ //i~6
-                if(user[i]==0){
-                    map.put(j,0.0);
+
+        /* 내림차순을 해주기 위해 List화 */
+        List<Map.Entry<Integer,Double>> list = new LinkedList<>(map.entrySet());
+
+        /* value기준 내림차순, 인덱스 기준 오름차순 정렬 */
+        Collections.sort(list, new Comparator<Map.Entry<Integer,Double>>(){
+            @Override
+            public int compare(Map.Entry<Integer,Double>o1, Map.Entry<Integer,Double>o2){
+                if(o2.getValue()-o1.getValue()>0){//첫번쨰 param < 두번째 param
+                    return 1;//o2가 큰경우 1
                 }
-
-                cnt += user[i];
+                if(o2.getValue()-o1.getValue()<0){//첫번쨰 param > 두번쨰 param
+                    return -1;//o1이 큰경우 -1
+                }
+                return o1.getKey()-o2.getKey(); //값이 같으면 key값을 오름차순으로
             }
-            System.out.println(cnt);
-            System.out.println(user[j]);
-            double failure = (double) user[j]/cnt;
-            map.put(j,failure);
-        }
 
-        System.out.println(map);
-
-
-        map.entrySet().stream().sorted(Map.Entry.comparingByValue()); //이러면 내림차순 정렬 안돼 ...
-        /*list 내림차순 정렬
-        List<Map.Entry<Integer,Double>> list = new ArrayList<>(map.entrySet());
-        list.sort((o1, o2) -> (int) (o2.getValue()-o1.getValue()));
+        });
 
         System.out.println(list);
-        */
-/*
-        i 스테이지 실패율 = 현재 i 유저/i스테이지 이상에 있는 유저수
-                만약 현재 i이상 유저 0명이면 = 0, 현재 i의 유저 수 0명 = 0 근데 0으로 나누면 오류 => 조건문
 
-                내가 구할 건 i 스테이지 이상의 유저
 
-*/
+        int i = 0;
+        for(Iterator<Map.Entry<Integer,Double>> iter = list.iterator(); iter.hasNext();){
+            Map.Entry<Integer,Double> entry = iter.next();
+            fail[i++]=entry.getKey();
+        }
 
-        System.out.println(Arrays.toString(fail));
-
-        System.out.println(Arrays.toString(user));
+        System.out.println("실패율"+Arrays.toString(fail));
     }
 }

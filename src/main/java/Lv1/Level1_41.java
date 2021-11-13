@@ -1,27 +1,17 @@
 package Lv1;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Level1_41 {
     public static void main(String[]args){
         int[] nums = {1,2,3,4,5,6};
-        int answer = 0;
+        //boxed()를 쓰면 int -> Integer로 박싱됨
+        int answer = Arrays.stream(nums).boxed().collect(Collectors.collectingAndThen(Collectors.toSet(), p -> Integer.min(p.size(),nums.length/2)));
+        Set<Integer> type = Arrays.stream(nums).boxed().collect(Collectors.toSet());
 
-        /*Set을 이용하는 방법*/
-        Set<Integer> type = new HashSet<Integer>();
-
-        for(int i:nums){
-            type.add(i);
-        }
-
-
-        int get = nums.length/2;
-        int typeTotal = type.size();
-
-        answer = get>typeTotal? typeTotal:get;
-
+        System.out.println(type);
         System.out.println(answer);
     }
 }

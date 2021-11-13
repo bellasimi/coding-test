@@ -62,6 +62,7 @@ public class Level1_40 {
         for(Iterator<Map.Entry<Integer,Double>> iter = list.iterator(); iter.hasNext();){
             Map.Entry<Integer,Double> entry = iter.next();
             fail[i++]=entry.getKey();
+            System.out.println(entry);
         }
 
         System.out.println("실패율"+Arrays.toString(fail));

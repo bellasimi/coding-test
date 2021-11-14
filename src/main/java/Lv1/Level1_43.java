@@ -30,10 +30,13 @@ public class Level1_43 {
 
         System.out.println(score);
 
-        int result = score.entrySet().stream().max((entry1,entry2)-> entry1.getValue()> entry2.getValue()? 1:-1).get().getKey();
+       /* 얘는 최종 하나의 KEY만 가져오네
+        int result = score.entrySet().stream().max((entry1,entry2)-> entry1.getValue()> entry2.getValue()? 1:-1).get().getKey();*/
 /*        List<Map.Entry<Integer,Integer>> list = new ArrayList<Map.Entry<Integer,Integer>>(score.entrySet());
-        list.stream().sorted(Map.Entry.comparingByValue());*/
-        System.out.println(result);
+        list.stream().sorted(Map.Entry.comparingByValue());
+         System.out.println(result);
+
+        */
 
 
     }

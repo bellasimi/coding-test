@@ -29,14 +29,24 @@ public class Level1_45 {
             }
         }
 
+
+        /* 배열로 푸는 방법
+                Arrays.sort(participant);
+        Arrays.sort(completion);
+
+        for(int i=0;i<completion.length;i++){
+            if(!participant[i].equals(completion[i])){
+                answer = participant[i];
+                break;
+            }
+            else{
+                answer = participant[i+1];
+            }
+        }
+        */
         System.out.println(answer);
 
     }
 
-
-    public String solution(String[] participant, String[] completion) {
-        String answer = "";
-        return answer;
-    }
 
 }

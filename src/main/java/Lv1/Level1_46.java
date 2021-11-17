@@ -14,6 +14,8 @@ public class Level1_46 {
                 for(int n3:nums){
                    if(n!=n2&&n!=n3&&n2!=n3){
                        map.put(n+n2+n3,map.getOrDefault(n+n2+n3,0)+1);
+                       int result =n+n2+n3;
+                       System.out.println(n+"+"+n2+"+"+n3+"="+result);
                    }
                 }
             }
@@ -28,7 +30,9 @@ public class Level1_46 {
                     map.put(n,0);
                 }
             }
+            map.put(n,map.get(n)/6);//3칸 조합이면 경우의 수가 6이므로 마지막에 6으로 나눠줘야 정답
         }
+
         System.out.println(map);
 
         int count = map.entrySet().stream().map(Map.Entry::getValue).reduce((a,b)->a+b).get();
@@ -36,7 +40,7 @@ public class Level1_46 {
     }
     public static void main(String[]args){
         Level1_46 l = new Level1_46();
-        int[] nums = {1,2,3,4};
+        int[] nums = {1,2,7,6,4};
         System.out.println(l.solution(nums));
     }
 }

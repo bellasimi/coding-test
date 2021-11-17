@@ -7,7 +7,22 @@ import java.util.Map;
 
 public class Level1_46 {
     public int solution(int[] nums) {
-        Arrays.sort(nums);
+
+        /*for문의 범위를 제한 하는 방법!! 이게 훨씬 빠르고 효율적!!*/
+        /* 최대 5ms걸림*/
+        int count =0;
+        for(int i=0;i<nums.length;i++){//i배열 값
+            for(int j=i+1;j<nums.length;j++){//i가 지나온 값을 스루
+                for(int k=j+1;k<nums.length;k++){//j가 지나온 값을 스루
+                    if(isPrime(nums[i]+nums[j]+nums[k])){
+                        count++;
+                    }
+                }
+            }
+        }
+
+
+        /*Arrays.sort(nums);
         Map<Integer,Integer> map = new HashMap<Integer,Integer>();
         for(int n: nums){
             for(int n2: nums){
@@ -35,8 +50,18 @@ public class Level1_46 {
 
         System.out.println(map);
 
-        int count = map.entrySet().stream().map(Map.Entry::getValue).reduce((a,b)->a+b).get();
+        int count = map.entrySet().stream().map(Map.Entry::getValue).reduce((a,b)->a+b).get();*/
         return count;
+    }
+
+    public Boolean isPrime(int n){
+        Boolean check = true;
+        for(int i=2;i<=Math.sqrt(n);i++){
+            if(n%i==0&&n!=2){
+                check = false;
+            }
+        }
+        return check;
     }
     public static void main(String[]args){
         Level1_46 l = new Level1_46();

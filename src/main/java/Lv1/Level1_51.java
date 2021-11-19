@@ -14,11 +14,10 @@ public class Level1_51 {
 
         for(String n:nums){
             if(s.contains(n)){
-                s.replace(n,change(n));
-                System.out.println("replace");
+                s = s.replaceAll(n,change(n));
             }
         }
-        System.out.println(s);
+        answer = Integer.parseInt(s);
         return answer;
     }
 

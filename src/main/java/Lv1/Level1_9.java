@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Level1_9 {
 
     public static void main(String[]args){
-        int n=10;
-        int m=12;
+        int n=2;
+        int m=7;
 
         int [] answer = new int[2];
 

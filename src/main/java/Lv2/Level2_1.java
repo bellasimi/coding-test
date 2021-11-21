@@ -11,18 +11,32 @@ public class Level2_1 {
         System.out.println(l.solution(arr));
     }
     public int solution(int[] arr) {
-        int answer = 1;
-        Arrays.sort(arr);
+
         int max = Arrays.stream(arr).max().getAsInt();
-        List<Integer> list = new ArrayList<Integer>();
-        for(int i=1;i<=max;i++){
-            for(int a: arr){
-                if(a%i==0){
-                    list.add(i);
+        int min = Arrays.stream(arr).min().getAsInt();
+        int answer = max*min;
+
+        while(min>0){
+            int temp = min;
+            min = max%min;
+            max = temp;
+        }
+
+        answer = answer/max;
+
+        for(int a:arr){
+            if(answer%a!=0){
+                max = answer;
+                min = a;
+                answer = max*min;
+                while(min>0){
+                    int temp = min;
+                    min = max%min;
+                    max = temp;
                 }
+                answer = answer/max;
             }
         }
-        System.out.println(list);
 
         return answer;
     }

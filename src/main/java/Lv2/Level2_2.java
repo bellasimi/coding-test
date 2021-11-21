@@ -1,5 +1,6 @@
 package Lv2;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 public class Level2_2 {
@@ -10,8 +11,23 @@ public class Level2_2 {
     }
     public String solution(String s) {
         String answer = "";
+        boolean flag =true;
+        String[] arrS = s.toLowerCase().split("");//이러면 " "도 포함해서 담김
+        System.out.println(Arrays.toString(arrS));
+        for(String a:arrS){
+            System.out.println(flag);
+            answer += flag? a.toUpperCase():a;
+            System.out.println(answer);
+
+            flag = a.equals(" ")? true:false;
+
+        }
+
+        return answer;
+
+        /*아래 코드들의 문제는 공백이 여러개일 때 고려하지 못한 점*/
+        /*s를 전부 돌면서 " "나올 때마다 index 0으로 만들기 4ms 18점
         int index=0;
-        /*s를 전부 돌면서 " "나올 때마다 index 0으로 만들기 4ms 18점*/
         s = s.toLowerCase();
         System.out.println(s);
         for(int i=0;i<s.length();i++){
@@ -35,7 +51,7 @@ public class Level2_2 {
         answer = s;
         return answer;
 
-
+*/
         /* split()-> +=로 붙이기 잘못된 풀이 13ms 43점
         s = s.toLowerCase();
         String[] arrS = s.split(" ");

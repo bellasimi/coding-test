@@ -17,11 +17,33 @@ public class Level2_5 {
     {
         int answer = 0;
         Arrays.sort(A);
-        List<Integer> list = Arrays.stream(B).boxed().collect(Collectors.toList());
-        list.sort(Comparator.reverseOrder());
+
+        /* 반복문 인덱스 거꾸로 효율성 최대 1.5ms */
+
+        Arrays.sort(B);
+
         for(int i=0;i<A.length;i++){
-            answer += A[i]* list.get(i);
+           answer+= A[i]*B[A.length-1-i];
         }
+
+
+        /* Integer[] 효율성 최대 6ms
+
+        Integer[] arrB = new Integer[B.length];
+        for(int i=0;i<B.length;i++){
+            arrB[i] = B[i];
+        }
+        Arrays.sort(arrB,Comparator.reverseOrder());
+        for(int i=0;i<A.length;i++){
+            answer += A[i]* arrB[i];
+        }
+        */
+        /* list 효율성 시간초과 */
+
+        //List<Integer> list = Arrays.stream(B).boxed().collect(Collectors.toList());
+        //list.sort(Comparator.reverseOrder());
+
+
 
 
         return answer;

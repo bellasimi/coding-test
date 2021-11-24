@@ -1,5 +1,7 @@
 package Lv2;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -11,6 +13,7 @@ public class Level2_5 {
         int[] B ={5,4,4};
         Level2_5 l = new Level2_5();
         System.out.println(l.solution(A,B));
+
     }
 
     public int solution(int []A, int []B)

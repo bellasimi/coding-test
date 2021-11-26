@@ -1,6 +1,7 @@
 package Lv2;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Level2_10 {
     public static void main(String[]args){
@@ -12,6 +13,26 @@ public class Level2_10 {
         boolean answer = true;
         boolean warn = true;
         long start = System.currentTimeMillis();
+        /*Stack으로 풀이 */
+
+        Stack<Character> stack = new Stack<Character>();
+
+        for(char c: s.toCharArray()){
+            if(c==')'&& stack.size() ==0){
+               return false;
+            }
+            else if(c==')'&&stack.size()>0){
+                stack.pop();
+            }
+            else if(c=='('){
+                stack.push(c);
+            }
+        }
+        if(stack.size()>0){
+            answer = false;
+        }
+
+
         /*char[] 사용 0.-ms 5,11번 통과가 안돼.. ,92점
         char[] arrS = s.toCharArray();
         int sum = 0;

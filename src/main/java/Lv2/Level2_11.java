@@ -1,5 +1,8 @@
 package Lv2;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,38 +15,40 @@ public class Level2_11 {
     public int solution(int [][]board)
     {
         int answer = 0;
-        int index = 0;
-        int[] widths = new int[board.length];
-        for(int[] b:board){
-            int width = 0;
+        int x = board.length;
+        int y = board[0].length;
+        int max = 0;
 
-            for(int i:b){
-                if(i==1){
-                    width++;
+        int[][] board2 = new int[x][y];
 
-                }
-            }
-            System.out.println(width);
-            widths[index] = width;
-            System.out.println("너비 배열"+Arrays.toString(widths));
-
-            index++;
+        for(int i=0;i<x;i++){
+            board2[i][0] = board[i][0];
         }
-        //{2,4}
+        for(int j=0;j<y;j++){
+            board2[0][j] = board[0][j];
+        }
+        for(int i=1;i<x;i++){
+            for(int j=1;j<y;j++){
+                int up = board2[i][j-1];
+                int left = board2[i-1][j];
+                int leftUp = board2[i-1][j-1];
 
-        int height = 1;
-        for(int i=0;i<widths.length;i++){
-            for(int j=i+1;j<widths.length;j++){
-                if(widths[i]<=widths[j]){
-                    height++;
-                    System.out.println(widths[j]);
+                if(board[i][j] ==1){
+                    board2[i][j] = Math.min(Math.min(up,left),leftUp)+1;
                 }
+                board2[0][j] = board[0][j];
             }
-            System.out.println("높이"+height);
+
         }
 
+        for(int i=0;i<x;i++){
+            for(int j=0;j<y;j++){
+                answer = Math.max(answer,board2[i][j]);
+            }
+        }
 
-        answer = height*height;
-        return answer;
+        return answer*answer;
     }
+
+
 }

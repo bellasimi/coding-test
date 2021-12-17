@@ -1,7 +1,9 @@
 package Lv2;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
+import java.util.Stack;
 
 /*https://programmers.co.kr/learn/courses/30/lessons/12973*/
 public class Level2_14 {
@@ -15,20 +17,30 @@ public class Level2_14 {
     public int solution(String s)
     {
         int answer = -1;
-        String[] arr = s.split("");
-        List<String> list = new ArrayList<String>();
+        Stack<Character> stack = new Stack<Character>();
 
-        for(int i=1;i<arr.length;i++){
+        char[] arr = s.toCharArray();
 
-            System.out.println("배열값"+ arr[i-1]+ " "+ arr[i]);
+        /* Stack 80점 풀이*/
+        stack.push(arr[0]);
+        try {
+            for (int i = 1; i < arr.length; i++) {
+                System.out.println("top값 " + stack.peek() + " 행값 " + arr[i]);
+                System.out.println(stack);
+                if (stack.peek() != arr[i]) {
+                    stack.push(arr[i]);
+                } else if (stack.peek() == arr[i]) {
+                    stack.pop();
+                }
 
-            if(!arr[i].equals(arr[i-1])){
-                list.add(arr[i-1]);
-                System.out.println("배열값"+ arr[i-1]+ " "+ arr[i]);
             }
+        }catch (Exception e){
+
+            answer = 1;
+
         }
-        System.out.println(list);
-        answer = list.size()>0?  0:1;
+        System.out.println(stack);
+        answer = stack.size()>0?  0:1;
 
 
         return answer;

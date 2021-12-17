@@ -19,9 +19,18 @@ public class Level2_14 {
         int answer = -1;
         Stack<Character> stack = new Stack<Character>();
 
+        for(char c: s.toCharArray()){
+            if(!stack.empty() && stack.peek()==c){
+                stack.pop();
+            }else{
+                stack.push(c);
+            }
+
+        }
+        System.out.println(stack);
+        /* Stack 80점 풀이
         char[] arr = s.toCharArray();
 
-        /* Stack 80점 풀이*/
         stack.push(arr[0]);
         try {
             for (int i = 1; i < arr.length; i++) {
@@ -40,6 +49,8 @@ public class Level2_14 {
 
         }
         System.out.println(stack);
+        */
+
         answer = stack.size()>0?  0:1;
 
 

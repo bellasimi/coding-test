@@ -12,8 +12,19 @@ public class Level2_15 {
     }
 
     public boolean solution(String[] phone_book) {
+        int len = phone_book.length;
+        boolean answer = true;
+        Arrays.sort(phone_book);//이땐 앞자리로 정렬해야 loop를 덜돈다!
 
-/*      String len으로 Arrays.sort 이후 substring으로 접두어 판별 -> 테스트 통과 but 효율성 실패  
+        for(int i = 0; i < len-1; i++){
+            if(phone_book[i+1].startsWith(phone_book[i])){
+                answer = false;
+                break;
+            }
+
+        }
+        return answer;
+/*      String len으로 Arrays.sort 이후 substring으로 접두어 판별 -> 테스트 통과 but 효율성 실패
         int len = phone_book.length;
         boolean answer = true;
 

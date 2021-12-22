@@ -3,6 +3,8 @@ package Lv2;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Level2_15 {
     public static void main(String[] args){
@@ -12,7 +14,28 @@ public class Level2_15 {
     }
 
     public boolean solution(String[] phone_book) {
-        int len = phone_book.length;
+        boolean answer = true;
+
+        Set<String> set = new HashSet<String>();
+        for(String s: phone_book){
+            set.add(s);
+
+        }
+        //System.out.println(set);
+        for(int i =0; i< phone_book.length;i++){
+            for(int j = 0; j< phone_book[i].length(); j++){
+                //System.out.println(phone_book[i].substring(0, j));
+                 if(set.contains(phone_book[i].substring(0, j))){
+
+                     answer =  false;
+                     break;
+                 }
+            }
+        }
+        return answer;
+
+
+/*        int len = phone_book.length;
         boolean answer = true;
         Arrays.sort(phone_book);//이땐 앞자리로 정렬해야 loop를 덜돈다!
 
@@ -23,7 +46,7 @@ public class Level2_15 {
             }
 
         }
-        return answer;
+        return answer;*/
 /*      String len으로 Arrays.sort 이후 substring으로 접두어 판별 -> 테스트 통과 but 효율성 실패
         int len = phone_book.length;
         boolean answer = true;

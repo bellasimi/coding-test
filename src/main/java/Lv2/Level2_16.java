@@ -11,7 +11,33 @@ public class Level2_16 {
         System.out.println(l.solution(progresses,speeds));
     }
     public int[] solution(int[] progresses, int[] speeds) {
+        /* 스택 큐 풀이 */
+        Queue<Integer> q = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
 
+        for(int i =0;i< speeds.length;i++){
+            double remain = (100-progresses[i]) / (double) speeds[i];
+            int date = (int) Math.ceil(remain);//해당 인덱스의 걸리는 기간
+
+            if(!q.isEmpty() && q.peek()< date){//아래값보다 더 오래걸리면
+
+                list.add(q.size());//기존 큐 값 개수 list에 추가
+                q.clear();//큐 비우기
+            }
+
+            q.offer(date);// 값 추가 첫번째 프로젝트가 맨 아래
+
+        }
+
+        list.add(q.size());
+
+        int[] answer = new int[list.size()];
+
+        for(int i = 0;i< answer.length;i++){
+            answer[i] =list.get(i);
+        }
+
+        return answer;
         /* list 풀이
 
         List<Integer> list = new ArrayList<>(); // 같은날 배포되는 프로젝트의 수 리스트

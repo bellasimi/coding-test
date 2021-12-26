@@ -15,6 +15,19 @@ public class Level2_17 {
     }
     public int[] solution(int[] prices) {
         int[] answer = new int[prices.length];
+        /* for문 풀이 100점 */
+       for(int i=0;i< prices.length;i++){
+            for(int j=i+1;j< prices.length;j++){
+                answer[i]++;
+                if(prices[i]>prices[j]){
+                    break;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(answer));
+        return answer;
+        /* queue 10점 풀이
+        int[] answer = new int[prices.length];
         Queue<Integer> q = new LinkedList<>();
         for(int i=0;i< prices.length;i++){
             q.offer(prices[i]);
@@ -25,10 +38,11 @@ public class Level2_17 {
             }
             answer[i] = q.size()-1;
             q.clear();
+
         }
-
-        System.out.println(Arrays.toString(answer));
-
+        return answer;
+        */
+        /* for문  10점 풀이 */
        /* for(int i=0;i< prices.length;i++){
             int cnt = 0;
             for(int j=i+1;j< prices.length;j++){
@@ -38,7 +52,8 @@ public class Level2_17 {
             }
             answer[i] = cnt;
         }
-        //System.out.println(Arrays.toString(answer));*/
         return answer;
+        //System.out.println(Arrays.toString(answer));*/
+
     }
 }

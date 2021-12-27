@@ -4,9 +4,9 @@ import java.util.Stack;
 
 public class Level2_18 {
     public static void main(String[] args){
-        int bridge_length = 2;
-        int weight = 10;
-        int[] truck_weights = {7,4,5,6};
+        int bridge_length = 100;
+        int weight = 100;
+        int[] truck_weights = {10,10,10,10,10,10,10,10,10,10};
         Level2_18 l =new Level2_18();
         System.out.println(l.solution(bridge_length,weight,truck_weights));
     }
@@ -19,12 +19,14 @@ public class Level2_18 {
             stack.push(truck_weights[i]);
         }
         System.out.println(stack);
-
+        if(stack.isEmpty()){
+            answer+= bridge_length;
+        }
         /* stack에 담기 트럭들 배열에 담는데 걸리는 시간*/
         while(!stack.isEmpty()){
 
             System.out.println("first: "+first+" stack: "+stack);
-            if(first+stack.peek()<=10){
+            if(first+stack.peek()<=weight){
                 System.out.println("조건1 : "+first+" + "+stack.peek());
                 stack.pop();
                 first = stack.peek();

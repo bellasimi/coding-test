@@ -1,3 +1,9 @@
+/* 0.07ms reduce 사용 */
+const reduceAvg = (arr) => {
+    var answer = arr.reduce((a,b)=> a+b)/arr.length;
+    return answer;
+}
+
 /* 0.1ms 단순 계산 */
 const mathAvg = (arr) => {
     var sum = 0;
@@ -8,6 +14,6 @@ const mathAvg = (arr) => {
 }
 
 function solution(arr) {
-
-    return mathAvg(arr);
+    return reduceAvg(arr);
+    //return mathAvg(arr);
 }

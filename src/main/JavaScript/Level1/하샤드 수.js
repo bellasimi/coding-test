@@ -10,7 +10,21 @@ const whileMath = (x) => {
         temp = Math.floor(temp/10);//자릿수를 하나씩 뺌 반내림을 해야 소숫점이된 자릿수를 버림
     }
 
-    var answer = x%d === 0? true: false;
+    var answer = x%d === 0;
+    return answer;
+}
+
+/* 평균 0.06ms 100점 String.split+ Number */
+//배열의 길이를 반복하도록해야해... 아래처럼 len 따로 구하면 부정확하네...
+//그리고 +''대신 String으로 자료형 변환해주고
+// 조건문만으로 true false 되네...
+function splitString(x) {
+    let sum = 0;
+    let arr = String(x).split('');
+    for(let i =0; i< arr.length; i++){
+        sum+= Number(arr[i]);
+    }
+    var answer = x%sum === 0;
     return answer;
 }
 
@@ -24,13 +38,14 @@ const splitNumb = (x) => {
     for(let i =0; i< len; i++){
         d+= Number(arr[i]);
     }
-    var answer = x%d === 0? true: false;
+    var answer = x%d === 0;
     return answer;
 }
 
 
 
 function solution(x) {
-
-    //return splitNumb;
+    return whileMath(x);
+    //return splitString(x);
+    //return splitNumb(x);
 }

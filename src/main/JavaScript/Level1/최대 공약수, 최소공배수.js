@@ -15,6 +15,12 @@ const basicCal = (n, m) => {
 
     return answer;
 }
+/* 평균 0.07ms for 계산 */
+const forCal = () => {
+   var r;
+   for(var nm= n*m;r = n % m;n = m, m = r){} //r = n % m로 true false 판별 true라면 계속 반복
+   return [m, nm/m];
+}
 
 function solution(n, m) {
 

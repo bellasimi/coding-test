@@ -8,7 +8,11 @@ const mathWhile = (n) => {
     }while(n>0)
     return answer;
 }
-
+/* 0.05ms String split reduce */
+const splitReduce = (n) => {
+    return String(n).split('').reduce((a,e) => a + parseInt(e),0);//0으로 a를 초기화해야 정수로 인식해
+}
 function solution(n){
     return mathWhile(n);
+    // return splitReduce(n);
 }

@@ -1,16 +1,26 @@
 const splitUpper = (s) => {
-    var answer = '';
-    s.toLowerCase().split('').map((e,i) => {
+    let flag = 0;
+    let answer = '';
 
-        if(i%2 === 0 ){
-            answer+= e.toUpperCase();
+    let arr = s.toLowerCase().split('')
+
+    for(let i =0; i< arr.length; i++){
+
+        if(arr[i]=== ' '){
+            flag = -1;
+        }
+        if(flag%2===0){
+            answer += arr[i].toUpperCase();
         }else{
-            answer+= e
+            answer += arr[i];
         }
 
-    })
+        flag++;
+    }
+
     return answer;
 }
+
 
 function solution(s) {
 
